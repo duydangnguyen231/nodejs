@@ -6,7 +6,7 @@ const ObjectId = require('mongodb').ObjectId;
 const port = 3000;
 
 const mongo_uri = 'mongodb://localhost:27017';
-var newuser = {name : "Duy" , password : "123", profession : "student", "_id": ObjectID(myId)}
+var newuser = {name : "Duy" , password : "123", profession : "student"}
 
 
 app.get('/listUsers', (req, res) => {
@@ -17,7 +17,7 @@ app.get('/listUsers', (req, res) => {
     collection.find({}).toArray().then(response => res.status(200).json(response)).catch(error => console.error(error));
   });
 });
-var myId = JSON.parse(req.body.id);
+
 app.post('/addUsers', (req, res) => {
   MongoClient.connect(mongo_uri, { useNewUrlParser: true })
   .then(client => {
